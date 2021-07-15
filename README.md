@@ -1,4 +1,4 @@
-# Newton-Raphson Implementation
+# Newton-Raphson Implementation in C
 
 The **Newton–Raphson method**, named after **Isaac Newton** and **Joseph Raphson**, is
 a root-finding algorithm which produces successively better approximations
@@ -28,3 +28,41 @@ Instead of iterating for a definite times
 this program checks the Subtrahend for each iteration.
 When the Subtrahend gets closer to a certain threshold,
 we stop iterating.
+
+```
+#include <stdio.h>
+
+// defines the maximum number of iteration.
+// the more the iteration the closer the approximation.
+#define MAX_ITERATION 20
+
+int main()
+{
+    // We are going to find the root of the polynomial
+    // 5x^3 -7 = 0
+
+    int i;
+    double guess = 2;   // initial guess
+    double subtrahend = 1.0;    // to check the sbtrahend
+    double error;   // to calculate the error
+    
+    for(i=0; subtrahend>10e-7 && i<MAX_ITERATION; ++i) {
+        
+        subtrahend = (5*guess*guess*guess - 7)/(15*guess*guess);
+        guess -= subtrahend;
+    }
+
+    // We put our final guess value to the polynomial
+    error = 5*guess*guess*guess - 7;
+
+    printf("\nRoot for polynomial 5x^3 -7 = 0: %lf\nerror: %lf\niterations: %d\n", guess, error, i);
+
+    return 0;
+}
+```
+Output:
+```
+Root for polynomial 5x^3 -7 = 0: 1.118689
+error: 0.000000
+iterations: 6
+```
