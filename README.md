@@ -1,4 +1,4 @@
-# Newton-Raphson-Implementation
+# Newton-Raphson Implementation
 
 The **Newton–Raphson method**, named after **Isaac Newton** and **Joseph Raphson**, is
 a root-finding algorithm which produces successively better approximations
